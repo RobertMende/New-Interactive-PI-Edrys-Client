@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <meta
+          name="description"
+          content="A reference module to help with development"
+        />
+        <meta name="show-in" content="*" />
+        <title>Optimization Plant Control</title>
+    
+        <script src="https://edrys-labs.github.io/module/edrys.js"></script>
+        <script
+          defer
+          src="https://edrys-labs.github.io/module/vendor/alpine.min.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          href="https://edrys-labs.github.io/module/vendor/water.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://edrys-labs.github.io/module/vendor/open-iconic/css/open-iconic.min.css"
+        />
+    <script src="https://cdn.jsdelivr.net/npm/@joint/core@4.0.1/dist/joint.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        console.log("Edrys:", Edrys);
+        Edrys.onReady(()=>console.log("Edrys ready", Edrys));
+    </script>
+</head>
+<body style="background-color: #ededed" id="main">
+    <div id="jointJsDiv" style="width: 800px; height: 600px; border: 2px solid yellowgreen"></div>
+    <div id="chartContainer" style="width: 1000px; height: 800px; border: 2px solid rgb(238, 175, 217);"></div>
+    <script src="index3.js" type="module">
+        Edrys.onReady(() => runApplication());
+    </script>
+</body>
