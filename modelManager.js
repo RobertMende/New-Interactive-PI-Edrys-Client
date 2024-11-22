@@ -29,6 +29,7 @@ class ModelManager extends Publisher{
     onSetModelData(sender, msg){
         const modelTopic = msg["subTopic"];
         const model = this.findModel(modelTopic);
+        console.log("message in OnSetModelData: ", msg);
         model.setData(msg.data);
         msg.data.model = model;
         this.fireEvent("modelUpdate", msg);

@@ -19,7 +19,7 @@ class TextField{
     }
 
     onDataUpdate(sender, msg){
-        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic || msg.subTopic == "getWholeModelData")) {
+        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic || msg.topic == "getWholeModelData")) {
             console.log("Left data update because subTopic was", msg.subTopic);
             return;
         }
