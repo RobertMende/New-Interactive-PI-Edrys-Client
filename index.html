@@ -78,6 +78,7 @@
 
     const onMessageReceivedFromEdrys = (from, subject, body) => {
         if (from === Edrys.username) return;
+        console.log("Received Edrys message:", from, subject, body);
         if (subject === "setValue") {
             console.log("Sending setValue Request", body);
             const { topic, subTopic, data } = JSON.parse(body);
