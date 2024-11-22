@@ -5,6 +5,11 @@ import PlantElementManager from "./PlantElementManager.js";
 import setup, { getControlFieldManager } from "./setup.js";
 import { setupCommunication, setupModels, getModelManager, getTextFieldManager, getCommunicationManager} from "./setup.js";
 
+Edrys.onReady(() => {
+    console.log("Running the application");
+    runApplication();
+});
+
 const runApplication = () =>{
 console.log("Hello from index3.js");
 
