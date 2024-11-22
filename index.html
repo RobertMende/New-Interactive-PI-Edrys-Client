@@ -101,12 +101,12 @@
     setupEdrysListener();
 });
     </script>
-    <script src="index3.js" type="module">
+    <script type="module">
         import runApplication from "./index3.js";
 
         Edrys.onReady(() => {
             if(Edrys.role === "station") return;
-            
+
             console.log("Going to run the application")
             runApplication()});
     </script>
