@@ -6,6 +6,8 @@ class CommunicationManager extends Publisher{
 
         this.setupWs(ws);
         this.ws = ws;
+
+        this.setupEdrysListener();
     }
 
     setupWs(ws){
@@ -26,15 +28,25 @@ class CommunicationManager extends Publisher{
 
     }
 
+    setupEdrysListener(){
+        Edrys.onMessage(({from, subject, body}) => this.onMessageReceivedFromEdrys(from ,subject, body));
+    }
+
     send(topic, subTopic, data){
         this.ws.send(JSON.stringify({topic: topic, subTopic: subTopic, data: data}));
     }
 
     onMessageReceived(msg){
-        this.fireEvent("messageReceived", msg);
+        console.log("Received message from ws:", msg);
+        Edrys.sendMessage(msg.topic, msg);
+    }
 
-        this.fireEvent(msg.topic, msg);
-
+    onMessageReceivedFromEdrys(from, subject, body){
+        if(from === Edrys.username) return;
+        if(subject === "setValue"){
+            const {topic, subTopic, data} = JSON.parse(body);
+            this.send(topic, subTopic, data);
+        }
     }
 }
 

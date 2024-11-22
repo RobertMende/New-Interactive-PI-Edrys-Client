@@ -118,32 +118,28 @@ const createSetpointField = (elementView, evt) => {
     const element = elementView.model;
     const labelText = element.attr('label/text');
 
-    // Extract the current setpoint value
-    const currentVal = labelText.match(/SP: (\d+)/)[1]; // Assuming the value is a number
+    const currentVal = labelText.match(/SP: (\d+)/)[1]; 
 
-    // Create an input element positioned over the current setpoint value
     const input = document.createElement('input');
     input.type = 'text';
     input.value = currentVal;
     input.style.position = 'absolute';
-    input.style.left = ((element.position().x + 72)-(input.value.length-2)*10) + 'px';  // Adjust x-offset for input position
-    input.style.top = (element.position().y + 40) + 'px';   // Adjust y-offset for input position
+    input.style.left = (element.position().x + 72) + 'px';  
+    input.style.top = (element.position().y + 40) + 'px';   
 
-    // Set custom styles
-    input.style.backgroundColor = 'white';  // Background color
-    input.style.color = 'grey';  // Font color
-    input.style.fontSize = '20px';  // Font size
-    input.style.fontFamily = 'Arial';  // Font family
+    input.style.backgroundColor = 'white';  
+    input.style.color = 'grey';  
+    input.style.fontSize = '20px';  
+    input.style.fontFamily = 'Arial';  
 
-    // Set the width dynamically based on the current value
-    input.style.width = `${currentVal.length + 1}ch`; // Add 1ch for some padding
+    input.style.width = `${currentVal.length + 1}ch`; 
 
     document.body.appendChild(input);
     input.focus();
 
-    // Function to handle updating the setpoint value
+
     function updateSetpoint() {
-        const newVal = parseFloat(input.value); // Get the user input
+        const newVal = parseFloat(input.value); 
 
         if (isNaN(newVal)) return;
         setNewValue(newVal, labelText);
@@ -160,9 +156,8 @@ const createSetpointField = (elementView, evt) => {
         }
     });
 
-    // Adjust width dynamically on input
     input.addEventListener('input', function () {
-        input.style.width = `${input.value.length + 1}ch`; // Adjust width based on content length
+        input.style.width = `${input.value.length + 1}ch`; 
     });
 };
 
@@ -219,10 +214,7 @@ paper.on('element:pointerdblclick', function(elementView, evt) {
 });
 
 const setNewValue = (newVal, labelText) =>{
-    const communicationManager = getCommunicationManager();
-    console.log("Value:", newVal);
-    console.log("label text:");
-    console.log(labelText);
+
 
     let subTopic;
     let data;
@@ -242,7 +234,7 @@ const setNewValue = (newVal, labelText) =>{
         console.error("No valid setValue model available for", labelText);
     }
 
-    communicationManager.send("setValue", subTopic, data);
+    Edrys.sendMessage("setValue", {topic: "setValue", subTopic: subTopic, data: data});
 }
 
 
