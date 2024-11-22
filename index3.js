@@ -3,7 +3,7 @@ import JointJsElementBuilder from "./pathBuilder.js";
 import ConnectionFactory from "./ConnectionFactory.js";
 import PlantElementManager from "./PlantElementManager.js";
 import setup, { getControlFieldManager } from "./setup.js";
-import { setupCommunication, setupModels, getModelManager, getTextFieldManager, getCommunicationManager} from "./setup.js";
+import { setupCommunication, setupModels, getModelManager, getTextFieldManager} from "./setup.js";
 
 
 const runApplication = () =>{
@@ -201,13 +201,12 @@ const isMagneticValveController = (elementView, evt) =>{
 const toggleMagneticValve = () =>{
     console.log("Toggling magnetic valve");
     const modelManager = getModelManager();
-    const communicationManager = getCommunicationManager();
 
     const mvStateModel = modelManager.findModel("Relay Pattern");
     const valveState = mvStateModel.y[mvStateModel.y.length-1]%2;
     console.log("Valve state:", valveState);
 
-    communicationManager.send("setValue", "Relay switch", {func: valveState? "turnOff":"turnOn", args: [1]});
+    Edrys.sendMessage("setValue", {topic: "setValue", subTopic: "Relay switch", data: {func: valveState? "turnOff":"turnOn", args: [1]}});
 }
 
 paper.on('element:pointerdblclick', function(elementView, evt) {
