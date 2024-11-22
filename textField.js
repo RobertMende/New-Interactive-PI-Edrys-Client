@@ -19,7 +19,7 @@ class TextField{
     }
 
     onDataUpdate(sender, msg){
-        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic || msg.topic == "getWholeModelData")) {
+        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic)) {
             console.log("Left data update because subTopic was", msg.subTopic);
             return;
         }
@@ -44,6 +44,8 @@ class TextField{
     }
 
     setText(text){
+        console.log("Setting text to", text);
+        console.log("With setpoint model", this.setPointModel);
         this.svgElement.attr("label/text", text);
     }
 

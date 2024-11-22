@@ -33,7 +33,7 @@ class ModelManager extends Publisher{
         const modelTopic = msg["subTopic"];
         const model = this.findModel(modelTopic);
         
-        model.setData(msg.data);
+        if(model.x == []) model.setData(msg.data);
         msg.data.model= model;
         this.fireEvent("modelUpdate", msg);
     }
