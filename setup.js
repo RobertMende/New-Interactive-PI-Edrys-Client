@@ -73,8 +73,8 @@ const setupModels = (sender, data) => {
 
 
     Edrys.onMessage(({from, subject, body}) =>{
-        if(subject === "dataUpdate") modelManager.onDataUpdate(undefined, JSON.parse(body));
-        if(subject === "getWholeModelData") modelManager.onSetModelData(undefined, JSON.parse(body));
+        if(subject === "dataUpdate") modelManager.onDataUpdate(undefined, body);
+        if(subject === "getWholeModelData") modelManager.onSetModelData(undefined, body);
     } )
     console.log("model manager models:", modelManager.getAllModels());
     
@@ -91,7 +91,7 @@ const setupCommunication = () => {
     Edrys.onMessage(({from, subject, body}) => {
         if(from === Edrys.username) return;
 
-        if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, JSON.parse(body));
+        if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, body);
     })
     Edrys.sendMessage("getModelsInfoOfAllInstruments", {topic: "getModelsInfoOfAllInstruments", subTopic: "", data: ""})
     console.log("Communication setup complete");
