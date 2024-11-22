@@ -88,6 +88,11 @@
             const { topic, subTopic, data } = JSON.parse(body);
             send(topic, subTopic, data);
         }
+        else if (subject === "getModelsInfoOfAllInstruments"){
+            console.log("Retrieving Models of all Instruments");
+            const { topic, subTopic, data } = JSON.parse(body);
+            send(topic, subTopic, data);
+        }
         else{
             console.log("Received request with the following:", from, subject, body);
 

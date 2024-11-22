@@ -44,11 +44,6 @@ class ModelManager extends Publisher{
         model.addData(msg.data);
         msg.data.model = model;
 
-        if(modelTopic === "Relay Pattern"){
-            console.log("Update for relay patter");
-            console.log(msg);
-        }
-
         this.fireEvent("modelUpdate", msg);
     }
 
