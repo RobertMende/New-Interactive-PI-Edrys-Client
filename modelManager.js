@@ -29,13 +29,12 @@ class ModelManager extends Publisher{
     onSetModelData(sender, msg){
         const modelTopic = msg["subTopic"];
         const model = this.findModel(modelTopic);
-        console.log("msg:", msg, "model:", model);
         model.setData(msg.data);
         msg.data.model = model;
 
         console.log("Setting Data for model", modelTopic);
         console.log(msg);
-
+        
         console.log("Going to fire modelUpdate with", msg);
         this.fireEvent("modelUpdate", msg);
     }
@@ -46,7 +45,6 @@ class ModelManager extends Publisher{
         model.addData(msg.data);
         msg.data.model = model;
 
-        console.log("Going to fire modelUpdate with", msg);
         this.fireEvent("modelUpdate", msg);
     }
 
