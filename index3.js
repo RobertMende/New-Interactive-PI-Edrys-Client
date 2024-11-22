@@ -15,11 +15,12 @@ var customNamespace = joint.shapes;
 
 var graph = new joint.dia.Graph({}, { cellNamespace: customNamespace });
 
+const jointJsDiv = document.getElementById('jointJsDiv')
 const paper = new joint.dia.Paper({
-    el: document.getElementById('jointJsDiv'),
+    el: jointJsDiv,
     model: graph,
-    width: 600,
-    height: 300,
+    width: jointJsDiv.clientWidth,
+    height: jointJsDiv.clientHeight,
     cellViewNamespace: customNamespace,
     background:{
         color: "#abf7b1"

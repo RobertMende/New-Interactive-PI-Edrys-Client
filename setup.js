@@ -80,7 +80,7 @@ const setupModels = (sender, data) => {
     
 
 
-    ["Temperature Thermostat setpoint", "MFC in Flow setpoint", "Temperature Oven setpoint", "Relay Pattern", "irSpectrum", "IR CO2", "IR Formaldehyde", "IR Methanol"].map(modelName => 
+    ["Temperature Thermostat setpoint", "MFC in Flow setpoint", "Temperature Oven setpoint", "Relay Pattern", "irSpectrum"].map(modelName => 
         Edrys.sendMessage("getWholeModelData", {topic: "getWholeModelData", subTopic: modelName, data:""}));
     console.log("Model setup complete");
 

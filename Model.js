@@ -38,8 +38,8 @@ class Model{
         if(this.modelType == "SpectrumModel"){
             console.log("Updating ir spectrum with");
             console.log(data);
-            this.x = data.timestamp.map(el => parseFloat(el.toFixed(0)));
-            this.y = data.value.map(el => parseFloat(el.toFixed(1)));;
+            this.x = data.x.map(el => parseFloat(el.toFixed(0)));
+            this.y = data.y.map(el => parseFloat(el.toFixed(1)));;
             return;
         }
 
