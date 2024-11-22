@@ -81,17 +81,17 @@
         console.log("Received Edrys message:", from, subject, body);
         if (subject === "setValue") {
             console.log("Sending setValue Request", body);
-            const { topic, subTopic, data } = JSON.parse(body);
+            const { topic, subTopic, data } = body;
             send(topic, subTopic, data);
         }
         else if (subject ==="getWholeModelData"){
             console.log("Retrieving Whole Model Data");
-            const { topic, subTopic, data } = JSON.parse(body);
+            const { topic, subTopic, data } = body;
             send(topic, subTopic, data);
         }
         else if (subject === "getModelsInfoOfAllInstruments"){
             console.log("Retrieving Models of all Instruments");
-            const {topic} = JSON.parse(body);
+            const {topic} = body;
             send(topic, subTopic, data);
         }
         else{
