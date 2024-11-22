@@ -91,7 +91,7 @@
         }
         else{
             console.log("Received request with the following:", from, subject, body);
-            
+
         }
     };
 
@@ -102,6 +102,12 @@
 });
     </script>
     <script src="index3.js" type="module">
-        Edrys.onReady(() => window.runApplication());
+        import runApplication from "./index3.js";
+
+        Edrys.onReady(() => {
+            if(Edrys.role === "station") return;
+            
+            console.log("Going to run the application")
+            runApplication()});
     </script>
 </body>
