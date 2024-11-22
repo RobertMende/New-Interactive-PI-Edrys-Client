@@ -19,7 +19,10 @@ class TextField{
     }
 
     onDataUpdate(sender, msg){
-        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic || msg.subTopic == "getWholeModelData")) return;
+        if(!(msg.subTopic == this.setPointModel.topic || msg.subTopic == this.processValueModel.topic || msg.subTopic == "getWholeModelData")) {
+            console.log("Left data update because subTopic was", msg.subTopic);
+            return;
+        }
 
         console.log("Going to update the texts");
         const text = this.getDisplayPattern();

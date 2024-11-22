@@ -31,11 +31,6 @@ class ModelManager extends Publisher{
         const model = this.findModel(modelTopic);
         model.setData(msg.data);
         msg.data.model = model;
-
-        console.log("Setting Data for model", modelTopic);
-        console.log(msg);
-        
-        console.log("Going to fire modelUpdate with", msg);
         this.fireEvent("modelUpdate", msg);
     }
 
