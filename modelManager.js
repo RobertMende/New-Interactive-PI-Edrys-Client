@@ -36,6 +36,7 @@ class ModelManager extends Publisher{
         console.log("Setting Data for model", modelTopic);
         console.log(msg);
 
+        console.log("Going to fire modelUpdate with", msg);
         this.fireEvent("modelUpdate", msg);
     }
 
@@ -45,6 +46,7 @@ class ModelManager extends Publisher{
         model.addData(msg.data);
         msg.data.model = model;
 
+        console.log("Going to fire modelUpdate with", msg);
         this.fireEvent("modelUpdate", msg);
     }
 
