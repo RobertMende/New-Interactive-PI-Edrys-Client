@@ -93,7 +93,7 @@ const setupCommunication = () => {
 
         if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, JSON.parse(body));
     })
-    Edrys.sendMessage("getModelsInfoOfAllInstruments", {topic: "getModelsInfoOfAllInstruments"})
+    Edrys.sendMessage("getModelsInfoOfAllInstruments", {topic: "getModelsInfoOfAllInstruments", subTopic: "", data: ""})
     console.log("Communication setup complete");
 }
 
