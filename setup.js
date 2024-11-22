@@ -71,44 +71,28 @@ const setupModels = (sender, data) => {
         chartManager.appendChart(chart);
     }
 
-    if(Edrys.role !== "station"){
+
     Edrys.onMessage(({from, subject, body}) =>{
         if(subject === "dataUpdate") modelManager.onDataUpdate(undefined, JSON.parse(body));
         if(subject === "getWholeModelData") modelManager.onSetModelData(undefined, JSON.parse(body));
     } )
     console.log("model manager models:", modelManager.getAllModels());
-    }
+    
 
-    if(Edrys.role === "station"){
-    ["Temperature Thermostat setpoint", "MFC in Flow setpoint", "Temperature Oven setpoint", "Relay Pattern", "irSpectrum", "IR CO2", "IR Formaldehyde", "IR Methanol"].map(modelName => communicationManager.send("getWholeModelData", modelName, ""));
-    }
+
+    ["Temperature Thermostat setpoint", "MFC in Flow setpoint", "Temperature Oven setpoint", "Relay Pattern", "irSpectrum", "IR CO2", "IR Formaldehyde", "IR Methanol"].map(modelName => 
+        Edrys.sendMessage("getWholeModelData", {topic: "getWholeModelData", subTopic: modelName, data:""}));
     console.log("Model setup complete");
 
     setupTextFields();
 }
 
-if(Edrys.role === "station"){
-const ws = new WebSocket("ws://localhost:8765");
-const communicationManager = new CommunicationManager(["getModelsInfoOfAllInstruments", "getAllModelTopics", "dataUpdate", "getWholeModelData","messageReceived"], ws);
-
-const getCommunicationManager = () => communicationManager;
-};
-
 const setupCommunication = () => {
-    if(Edrys.role === "station"){
+    Edrys.onMessage(({from, subject, body}) => {
+        if(from === Edrys.username) return;
 
-    communicationManager.subscribeToEvent("getModelsInfoOfAllInstruments", setupModels);
-    
-    console.log("ws connecting:", ws.readyState == 0);
-
-    const interval = setInterval(()=>{
-        if(ws.readyState == 0) return;
-
-        communicationManager.send("getModelsInfoOfAllInstruments", "", "");
-        clearInterval(interval);
-        console.log("Expecting models info");
-    }, 250)
-    }
+        if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, JSON.parse(body));
+    })
     console.log("Communication setup complete");
 }
 
@@ -201,4 +185,4 @@ for (let child of children) {
 
 export default setup;
 
-export {setupModels, setupCommunication, getModelManager, getTextFieldManager, getCommunicationManager, getControlFieldManager};
+export {setupModels, setupCommunication, getModelManager, getTextFieldManager, getControlFieldManager};

@@ -43,6 +43,7 @@ class Model{
             return;
         }
 
+        if(this.modelType === "TimeValueModel" && this.x != []) return;
         this.x = data["x"];
         this.y = data["y"];
     }
