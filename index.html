@@ -32,13 +32,66 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        console.log("Edrys:", Edrys);
         Edrys.onReady(()=>console.log("Edrys ready", Edrys));
     </script>
 </head>
 <body style="background-color: #ededed" id="main">
     <div id="jointJsDiv" style="width: 800px; height: 600px; border: 2px solid yellowgreen"></div>
     <div id="chartContainer" style="width: 1000px; height: 800px; border: 2px solid rgb(238, 175, 217);"></div>
+    <script>
+        Edrys.onReady(() => {
+    if (Edrys.role !== "station") return;
+
+
+    const setupWs = (ws) => {
+        ws.addEventListener("open", (e) => {
+            console.log("ws open");
+        });
+
+        ws.addEventListener("message", (e) => {
+            const msg = JSON.parse(e.data);
+            onMessageReceived(msg); 
+        });
+
+        ws.addEventListener("close", (e) => {
+            console.log("ws connection closed", e);
+            window.alert("The websocket connection has been closed");
+        });
+    };
+
+
+    const setupEdrysListener = () => {
+        Edrys.onMessage(({ from, subject, body }) => {
+            onMessageReceivedFromEdrys(from, subject, body); 
+        });
+    };
+
+
+    const send = (topic, subTopic, data) => {
+        ws.send(JSON.stringify({ topic, subTopic, data })); 
+    };
+
+    const onMessageReceived = (msg) => {
+        console.log("Received message from ws:", msg);
+        Edrys.sendMessage(msg.topic, msg);
+    };
+
+
+    const onMessageReceivedFromEdrys = (from, subject, body) => {
+        if (from === Edrys.username) return;
+        if (subject === "setValue") {
+            console.log("Sending setValue Request", body);
+            const { topic, subTopic, data } = JSON.parse(body);
+            send(topic, subTopic, data);
+        }
+    };
+
+ 
+    const ws = new WebSocket("ws://localhost:8765");
+    setupWs(ws);
+    setupEdrysListener();
+});
+    </script>
     <script src="index3.js" type="module">
         
     </script>
