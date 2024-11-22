@@ -72,7 +72,6 @@
     };
 
     const onMessageReceived = (msg) => {
-        console.log("Received message from ws:", msg);
         Edrys.sendMessage(msg.topic, msg);
     };
 
