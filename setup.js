@@ -81,7 +81,7 @@ const setupModels = (sender, data) => {
 
 
     ["Temperature Thermostat setpoint", "MFC in Flow setpoint", "Temperature Oven setpoint", "Relay Pattern", "irSpectrum", "IR CO2", "IR Formaldehyde", "IR Methanol"].map(modelName => 
-        Edrys.sendMessage("getWholeModelData", JSON.stringify({topic: "getWholeModelData", subTopic: modelName, data:""})));
+        Edrys.sendMessage("getWholeModelData", {topic: "getWholeModelData", subTopic: modelName, data:""}));
     console.log("Model setup complete");
 
     setupTextFields();
@@ -93,7 +93,7 @@ const setupCommunication = () => {
 
         if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, JSON.parse(body));
     })
-    Edrys.sendMessage("getModelsInfoOfAllInstruments", JSON.stringify({topic: "getModelsInfoOfAllInstruments"}))
+    Edrys.sendMessage("getModelsInfoOfAllInstruments", {topic: "getModelsInfoOfAllInstruments"})
     console.log("Communication setup complete");
 }
 

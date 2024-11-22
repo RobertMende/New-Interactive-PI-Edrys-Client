@@ -90,7 +90,7 @@
         }
         else if (subject === "getModelsInfoOfAllInstruments"){
             console.log("Retrieving Models of all Instruments");
-            const { topic, subTopic, data } = JSON.parse(body);
+            const {topic} = JSON.parse(body);
             send(topic, subTopic, data);
         }
         else{
