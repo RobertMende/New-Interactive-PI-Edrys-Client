@@ -73,8 +73,14 @@ const setupModels = (sender, data) => {
 
 
     Edrys.onMessage(({from, subject, body}) =>{
+        if(from === Edrys.unsername) return;
+        
         if(subject === "dataUpdate") modelManager.onDataUpdate(undefined, body);
-        if(subject === "getWholeModelData") modelManager.onSetModelData(undefined, body);
+        if(subject === "getWholeModelData") {
+            if(body.data == "") return;
+
+            console.log("Going to set the whole model data with", body);
+            modelManager.onSetModelData(undefined, body);
     } )
     console.log("model manager models:", modelManager.getAllModels());
     
