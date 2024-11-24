@@ -81,7 +81,8 @@ const setupModels = (sender, data) => {
 
             console.log("Going to set the whole model data with", body);
             modelManager.onSetModelData(undefined, body);
-    } )
+        }
+    })
     console.log("model manager models:", modelManager.getAllModels());
     
 
