@@ -35,12 +35,17 @@ JointJsElementBuilder.setDefaultPathConfig({
 const plantElementManager = setup(paper, graph);
 plantElementManager.getAllPlantElements().forEach(el => console.log(el.name));
 
-const [initialWidth, initialHeight] = [window.innerWidth, window.innerHeight];
+const jointJsDivParent = jointJsDiv.parentElement;
+const [jointJsDivParentWidth, jointJsDivParentHeight] = [jointJsDivParent.clientWidth, jointJsDivParent.clientHeight];
 
 const resizePaper = () =>{
-    const [width, height] = [window.innerWidth, window.innerHeight];
-    paper.scale(width/initialWidth, height/initialHeight);
-    paper.setDimensions(width, height);
+    const [originalWidth, originalHeight] = [1584, 735];
+
+    const targetWidth = jointJsDivParentWidth;
+    const targetHeight = jointJsDivParentWidth*originalHeight/originalWidth;
+    const ratio = jointJsDivParentWidth/originalWidth;
+    paper.scale(ratio, ratio);
+    paper.setDimensions(targetWidth, targetHeight);
 }
 
 
