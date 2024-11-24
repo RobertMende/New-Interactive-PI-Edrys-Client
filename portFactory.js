@@ -33,7 +33,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: -(height-width/2),
@@ -48,7 +48,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: width/2,
@@ -75,7 +75,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: -(height-width/2)
@@ -90,7 +90,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: width/2
@@ -114,7 +114,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: -width/2,
                     cy: 0
@@ -130,7 +130,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: 0
@@ -154,7 +154,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: 0,
                     cy: -width/4,
@@ -171,7 +171,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width,
                     cy: -width/4,
@@ -196,7 +196,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: 0,
                     cy: -bodyHeight/3
@@ -212,7 +212,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyHeight*1.5,
                     cy: -bodyHeight/3
@@ -228,7 +228,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyHeight*1.5/2,
                     cy: bodyHeight/2.5
@@ -255,7 +255,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: 0,
                     cy: -bodyHeight/2
@@ -271,7 +271,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyHeight*2,
                     cy: -bodyHeight/2
@@ -295,7 +295,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyHeight*2/3,
                     cy: -bodyHeight*5/3
@@ -311,7 +311,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyHeight*1/3,
                     cy: -bodyHeight*5/3
@@ -336,7 +336,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: 0,
                     cy: -bodyHeight/2
@@ -352,7 +352,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: bodyWidth,
                     cy: -bodyHeight/2
@@ -376,7 +376,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: -width/2,
                     cy: 0
@@ -392,7 +392,7 @@ class JointJsPortFactory{
             attrs: {
                 portBody: {
                     magnet: true,
-                    r: 0,
+                    r: 1,
                     fill:  '#03071E',
                     cx: width/2,
                     cy: 0
@@ -417,7 +417,7 @@ class JointJsPortFactory{
         attrs: {
             portBody: {
                 magnet: true,
-                r: 0,
+                r: 1,
                 fill:  '#03071E'
             },
         },
