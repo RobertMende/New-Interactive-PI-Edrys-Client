@@ -36,7 +36,7 @@ const plantElementManager = setup(paper, graph);
 plantElementManager.getAllPlantElements().forEach(el => console.log(el.name));
 
 const jointJsDivParent = jointJsDiv.parentElement;
-const [jointJsDivParentWidth, jointJsDivParentHeight] = [jointJsDivParent.innerWidth, jointJsDivParent.innerHeight];
+const [jointJsDivParentWidth, jointJsDivParentHeight] = [jointJsDivParent.clientWidth, jointJsDivParent.clientHeight];
 
 const resizePaper = () =>{
     const [originalWidth, originalHeight] = [1584, 735];
