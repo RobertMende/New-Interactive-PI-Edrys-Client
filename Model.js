@@ -43,10 +43,6 @@ class Model{
             return;
         }
 
-        if(this.modelType === "TimeValueModel" && this.x != []) {
-            console.log("returning since model is not empty with topic", this.topic);
-            return;
-        }
         console.log("Going to set the model", this.topic, "with data", data)
         this.x = data["x"];
         this.y = data["y"];
