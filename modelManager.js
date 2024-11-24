@@ -35,7 +35,7 @@ class ModelManager extends Publisher{
         console.log("Going to set data for model", model.topic);
         
         if(model.x == []) {console.log("going to set the data"); model.setData(msg.data);}
-        else{console.log("Model already has data, not going to set it")}
+        else{console.log("Model already has data, not going to set it, model data:", model.x, model.y)}
         msg.data.model= model;
         this.fireEvent("modelUpdate", msg);
     }
