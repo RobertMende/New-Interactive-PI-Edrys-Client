@@ -141,7 +141,7 @@ const createSetpointField = (elementView, evt) => {
     input.style.left = `${elementCenterX}px`;
     input.style.top = `${elementCenterY}px`;
 
-    input.style.transform = 'translate(-50%, -50%)'; 
+    //input.style.transform = 'translate(-50%, -50%)'; 
     input.style.backgroundColor = 'white';
     input.style.color = 'grey';
     input.style.fontSize = '20px';
