@@ -140,13 +140,22 @@ const createSetpointField = (elementView, evt) => {
     input.value = currentVal;
     input.style.position = 'absolute';
 
-    input.style.left = (element.position().x) + 'px';  
-    input.style.top = (element.position().y) + 'px';   
+    
+    const bbox = elementView.getBBox();
+    const centerX = bbox.x + bbox.width/2;
+    const centerY = bbox.y + bbox.height/2;
+    console.log("local center:", centerX, centerY);
+    const globalCenter = paper.localToPagePoint(centerX, centerY);
+    console.log("global center:", globalCenter);
+    
+    input.style.left = (globalCenter.x) + 'px';  
+    input.style.top = (globalCenter.y) + 'px';   
 
     input.style.backgroundColor = 'white';  
     input.style.color = 'grey';  
     input.style.fontSize = '20px';  
     input.style.fontFamily = 'Arial';  
+    input.style.transform = 'translate(-50%, -50%)';
 
     input.style.width = `${currentVal.length + 1}ch`; 
 
