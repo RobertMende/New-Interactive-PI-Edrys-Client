@@ -155,8 +155,8 @@ const createSetpointField = (elementView, evt) => {
     const globalCenter = paper.localToPagePoint(centerX, centerY);
     console.log("global center:", globalCenter);
     
-    input.style.left = (globalCenter.x) + 'px';  
-    input.style.top = (globalCenter.y) + 'px';   
+    input.style.left = (1.5*globalCenter.x) + 'px';  
+    input.style.top = (1.1*globalCenter.y) + 'px';   
 
     input.style.backgroundColor = 'white';  
     input.style.color = 'grey';  
