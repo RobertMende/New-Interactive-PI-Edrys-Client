@@ -129,12 +129,19 @@ const createSetpointField = (elementView, evt) => {
 
     const currentVal = labelText.match(/SP: (\d+)/)[1]; 
 
+    const [originalWidth, originalHeight] = [1536, 736];
+    const jointJsDiv = document.getElementById("jointJsDiv");
+    const [currentWidth, currentHeight] = [jointJsDiv.clientWidth, jointJsDiv.clientHeight];
+    
+    const [widthRatio, heightRatio] = [currentWidth/originalWidth, currentHeight/originalHeight];
+
     const input = document.createElement('input');
     input.type = 'text';
     input.value = currentVal;
     input.style.position = 'absolute';
-    input.style.left = (element.position().x + 72) + 'px';  
-    input.style.top = (element.position().y + 40) + 'px';   
+
+    input.style.left = (element.position().x + heightRatio*72) + 'px';  
+    input.style.top = (element.position().y + widthRatio*40) + 'px';   
 
     input.style.backgroundColor = 'white';  
     input.style.color = 'grey';  
