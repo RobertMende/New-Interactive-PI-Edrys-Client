@@ -123,35 +123,30 @@ paper.on("element:mouseout", elView=>{
 
 
 const createSetpointField = (elementView, evt) => {
-    evt.preventDefault();
+        evt.preventDefault();
     const element = elementView.model;
-
     const labelText = element.attr('label/text');
-    const currentVal = labelText.match(/SP: (\d+)/)[1];
+
+    const currentVal = labelText.match(/SP: (\d+)/)[1]; 
 
     const input = document.createElement('input');
     input.type = 'text';
     input.value = currentVal;
-
-    const bbox = elementView.getBBox(); // Get bounding box of the element
-    const elementCenterX = bbox.x + bbox.width / 2;
-    const elementCenterY = bbox.y + bbox.height / 2;
-
     input.style.position = 'absolute';
-    input.style.left = `${elementCenterX}px`;
-    input.style.top = `${elementCenterY}px`;
+    input.style.left = (element.position().x + 72) + 'px';  
+    input.style.top = (element.position().y + 40) + 'px';   
 
-    //input.style.transform = 'translate(-50%, -50%)'; 
-    input.style.backgroundColor = 'white';
-    input.style.color = 'grey';
-    input.style.fontSize = '20px';
-    input.style.fontFamily = 'Arial';
+    input.style.backgroundColor = 'white';  
+    input.style.color = 'grey';  
+    input.style.fontSize = '20px';  
+    input.style.fontFamily = 'Arial';  
 
-    input.style.width = `${currentVal.length + 1}ch`;
-
+    input.style.width = `${currentVal.length + 1}ch`; 
 
     document.body.appendChild(input);
     input.focus();
+
+
 
 
     function updateSetpoint() {
