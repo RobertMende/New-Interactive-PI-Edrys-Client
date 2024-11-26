@@ -131,6 +131,8 @@ document.addEventListener("dblclick", function(event) {
 
 const createSetpointField = (elementView, evt) => {
         evt.preventDefault();
+    const {clientX, clientY} = evt;
+    console.log("clientX and clientY from event:", clientX, clientY);
     const element = elementView.model;
     const labelText = element.attr('label/text');
 
