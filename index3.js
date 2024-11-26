@@ -140,8 +140,8 @@ const createSetpointField = (elementView, evt) => {
     input.value = currentVal;
     input.style.position = 'absolute';
 
-    input.style.left = (element.position().x + widthRatio*72) + 'px';  
-    input.style.top = (element.position().y + heightRatio*40) + 'px';   
+    input.style.left = (element.position().x) + 'px';  
+    input.style.top = (element.position().y) + 'px';   
 
     input.style.backgroundColor = 'white';  
     input.style.color = 'grey';  
