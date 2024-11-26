@@ -55,6 +55,7 @@ const getModelManager = () => modelManager;
 const onModelUpdate = (sender, msg) => console.log("Model update:", msg.data);
 
 const setupModels = (sender, data) => {
+    
     const modelMap = data.data;
     const factory = new ModelFactory();
 
@@ -98,7 +99,8 @@ const setupCommunication = () => {
     Edrys.onMessage(({from, subject, body}) => {
         if(from === Edrys.username) return;
 
-        if(subject === "getModelsInfoOfAllInstruments") setupModels(undefined, body);
+        if(subject === "getModelsInfoOfAllInstruments") {
+            if(modelManager.getAllModels().length === 0) setupModels(undefined, body);}
     })
     Edrys.sendMessage("getModelsInfoOfAllInstruments", {topic: "getModelsInfoOfAllInstruments", subTopic: "", data: ""})
     console.log("Communication setup complete");
