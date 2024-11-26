@@ -120,6 +120,13 @@ paper.on("element:mouseout", elView=>{
     }
 })
 
+document.addEventListener("dblclick", function(event) {
+            const x = event.clientX; // X-coordinate relative to the viewport
+            const y = event.clientY; // Y-coordinate relative to the viewport
+
+            console.log(`Double click position for client: (${x}, ${y})`);
+});
+
 
 
 const createSetpointField = (elementView, evt) => {
