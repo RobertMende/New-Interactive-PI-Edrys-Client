@@ -120,17 +120,9 @@ paper.on("element:mouseout", elView=>{
     }
 })
 
-document.addEventListener("dblclick", function(event) {
-            const x = event.clientX; // X-coordinate relative to the viewport
-            const y = event.clientY; // Y-coordinate relative to the viewport
-
-            console.log(`Double click position for client: (${x}, ${y})`);
-});
-
-
 
 const createSetpointField = (elementView, evt) => {
-        evt.preventDefault();
+    evt.preventDefault();
     const {clientX, clientY} = evt;
     console.log("clientX and clientY from event:", clientX, clientY);
     const element = elementView.model;
@@ -148,17 +140,8 @@ const createSetpointField = (elementView, evt) => {
     input.type = 'text';
     input.value = currentVal;
     input.style.position = 'absolute';
-
-    
-    const bbox = elementView.getBBox();
-    const centerX = bbox.x + bbox.width/2;
-    const centerY = bbox.y + bbox.height/2;
-    console.log("local center:", centerX, centerY);
-    const globalCenter = paper.localToPagePoint(centerX, centerY);
-    console.log("global center:", globalCenter);
-    
-    input.style.left = (1.5*globalCenter.x) + 'px';  
-    input.style.top = (1.1*globalCenter.y) + 'px';   
+    input.style.left = clientX + 'px';  
+    input.style.top = clientY + 'px';   
 
     input.style.backgroundColor = 'white';  
     input.style.color = 'grey';  
