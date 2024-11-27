@@ -87,8 +87,8 @@ function createChartJsLineChart(ctx, config) {
  
             const newDiv = document.createElement('div');
             
-            newDiv.style.width = `40%`;
-            newDiv.style.height = `24%`;
+            newDiv.style.width = `80%`;
+            newDiv.style.height = `48%`;
             newDiv.style.border = '1px solid black';
             newDiv.style.margin = '2%';
             newDiv.style.backgroundColor = "#fffbf7";
