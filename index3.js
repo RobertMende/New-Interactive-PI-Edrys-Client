@@ -53,7 +53,8 @@ window.addEventListener("resize", ()=>{
     resizePaper();
 });
 
-resizePaper();
+setTimeout(() => {
+resizePaper();}, 2000);
 
 
 
