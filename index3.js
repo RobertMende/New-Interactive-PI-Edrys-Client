@@ -9,8 +9,6 @@ import { setupCommunication, setupModels, getModelManager, getTextFieldManager} 
 const runApplication = () =>{
     if (Edrys.role === "station") return;
 
-console.log("Hello from index3.js");
-
 var customNamespace = joint.shapes;
 
 var graph = new joint.dia.Graph({}, { cellNamespace: customNamespace });
@@ -53,8 +51,7 @@ window.addEventListener("resize", ()=>{
     resizePaper();
 });
 
-setTimeout(() => {
-resizePaper();}, 2000);
+resizePaper();
 
 
 
