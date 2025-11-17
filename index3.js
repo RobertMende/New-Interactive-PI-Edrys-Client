@@ -156,7 +156,7 @@ const createSetpointField = (elementView, evt) => {
 
 
     function updateSetpoint() {
-        const newVal = parseFloat(input.value); 
+        const newVal = parseFloat(input.value.replace(",", ".")); 
 
         if (isNaN(newVal)) return;
         setNewValue(newVal, labelText);
