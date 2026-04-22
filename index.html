@@ -101,7 +101,9 @@
     };
 
  
-    const ws = new WebSocket("ws://localhost:8765");
+    let ws = new WebSocket("ws://localhost:8765");
+    ws.close();
+    ws = new WebSocket("ws://localhost:8765");
     setupWs(ws);
     setupEdrysListener();
 });
