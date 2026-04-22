@@ -34,22 +34,39 @@ const plantElementManager = setup(paper, graph);
 plantElementManager.getAllPlantElements().forEach(el => console.log(el.name));
 
 const jointJsDivParent = jointJsDiv.parentElement;
-const [jointJsDivParentWidth, jointJsDivParentHeight] = [jointJsDivParent.clientWidth, jointJsDivParent.clientHeight];
+const ORIGINAL_WIDTH = 1584;
+const ORIGINAL_HEIGHT = 735;
 
-const resizePaper = () =>{
-    const [originalWidth, originalHeight] = [1584, 735];
+const resizePaper = () => {
+    const parentWidth = jointJsDivParent.clientWidth;
+    if (!parentWidth) return;
 
-    const targetWidth = jointJsDivParentWidth;
-    const targetHeight = jointJsDivParentWidth*originalHeight/originalWidth;
-    const ratio = jointJsDivParentWidth/originalWidth;
-    paper.scale(ratio, ratio);
+    const targetWidth = parentWidth;
+    const targetHeight = parentWidth * ORIGINAL_HEIGHT / ORIGINAL_WIDTH;
+    const ratio = targetWidth / ORIGINAL_WIDTH;
+
+    // Wichtig: erst Containergröße setzen
+    jointJsDiv.style.width = `${targetWidth}px`;
+    jointJsDiv.style.height = `${targetHeight}px`;
+
+    // Paper-Dimensionen an sichtbare Größe anpassen
     paper.setDimensions(targetWidth, targetHeight);
-}
 
+    // Scale explizit von Grund auf setzen, nicht "gefühlt" inkrementell weiterdenken
+    paper.scale(ratio, ratio);
 
-window.addEventListener("resize", ()=>{
+    // Danach Links aktualisieren, damit Router/Vertices sauber neu aufgelöst werden
+    graph.getLinks().forEach(link => {
+        link.router('manhattan', { padding: 1 });
+        link.connector('rounded');
+    });
+};
+
+const resizeObserver = new ResizeObserver(() => {
     resizePaper();
 });
+
+resizeObserver.observe(jointJsDivParent);
 
 resizePaper();
 
